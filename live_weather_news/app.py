@@ -77,9 +77,10 @@ def main():
 
         special_report.drop(columns='tmFc', inplace=True)
         special_report.columns = ['지점코드', '지역명', '제목', '발표번호','발표시각']
-        special_report.set_index('지역명',inplace=True)
-        special_report.drop(columns=['지점코드','발표번호'],inplace=True)
-        st.dataframe(special_report)
+        show_data = special_report.copy()
+        show_data.set_index('지역명')
+        show_data.drop(columns=['지점코드','발표번호'],inplace=True)
+        st.dataframe(show_data)
     except Exception as E:
         st.subheader("🌞기상특보가 없습니다. 화창한 날씨로 예상됩니다.🌞")
         print(E)
