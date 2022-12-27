@@ -12,3 +12,4 @@ datetime
 bs4
 lxml
 streamlit-option-menu
+openpyxl
