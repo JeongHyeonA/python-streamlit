@@ -12,7 +12,7 @@ def emergency_hospital(cd_nm, sgg_nm):
 
         # 공공데이터 조회
         url = 'http://apis.data.go.kr/B552657/ErmctInfoInqireService/getEmrrmRltmUsefulSckbdInfoInqire'
-        params ={'serviceKey' : '3ouN4EKp4qGz+V76EbDHKehnbp5sYL0o19tpl5fAl2Q7s4ZosClGRfc1ENwk+2Px4QUPi4gCuCHGuG3kXFrs9w==', 'STAGE1' : cd_nm, 'STAGE2' : sgg_nm, 'pageNo' : '1', 'numOfRows' : '1000' }
+        params ={'serviceKey' : 'I3k49MWVfMM1ikcVAQtW+aBQeMCQuFa3+ZqXWrCmB1NqsdllN466vryE/9Nt1OhZ3nx46rQ6oaw0nGhO/FJULg==', 'STAGE1' : cd_nm, 'STAGE2' : sgg_nm, 'pageNo' : '1', 'numOfRows' : '1000' }
 
         response = requests.get(url, params=params)
         content = response.text

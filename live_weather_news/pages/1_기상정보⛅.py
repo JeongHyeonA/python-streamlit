@@ -10,12 +10,13 @@ import json
 filePath, fileName = os.path.split(__file__)
 data_path = os.path.join(filePath,'using_data','korea_weatherlocation_xy.csv')
 
-
+# 
 
 # 6시쯤 API 호출 안됨
 def weatherData():
     # 시간 설정
-    base_datebf30 = datetime.now() + timedelta(hours = 9) - timedelta(minutes = 30)
+    base_datebf30 = datetime.now() - timedelta(minutes = 30)
+    # + timedelta(hours = 9)
     base_date = base_datebf30.strftime('%Y%m%d')
     if int(base_datebf30.strftime('%d')) > 30:
         base_time = base_datebf30.strftime('%H00')
@@ -39,7 +40,7 @@ def weatherData():
 
     # api 호출
     url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst'
-    params ={'serviceKey' : '3ouN4EKp4qGz+V76EbDHKehnbp5sYL0o19tpl5fAl2Q7s4ZosClGRfc1ENwk+2Px4QUPi4gCuCHGuG3kXFrs9w==',
+    params ={'serviceKey' : 'I3k49MWVfMM1ikcVAQtW+aBQeMCQuFa3+ZqXWrCmB1NqsdllN466vryE/9Nt1OhZ3nx46rQ6oaw0nGhO/FJULg==',
             'pageNo' : '1', 'numOfRows' : '1000', 'dataType' : 'JSON', 'base_date' : base_date, 'base_time' : base_time, 'nx' : nx, 'ny' : ny }
 
     # json csv 변환
