@@ -106,7 +106,9 @@ def main():
         map_lat_lod = pd.merge(special_report,special_local_code)
         map = special_report_map(special_local_code,map_lat_lod,special_report)
         a = st_folium(map, returned_objects=[])
+        
         print(a)
+        
         return a
     except Exception as E:
         print(E)
