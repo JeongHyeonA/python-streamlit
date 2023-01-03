@@ -45,7 +45,6 @@ def special_report_df():
     json_ob = json.loads(contents)
     body = json_ob['response']['body']['items']['item']
     body = pd.json_normalize(body)
-    print(body)
     return body
 
 def main():
@@ -106,8 +105,9 @@ def main():
         special_local_code.rename(columns={'#STN_ID,' : '지점코드'},inplace=True)
         map_lat_lod = pd.merge(special_report,special_local_code)
         map = special_report_map(special_local_code,map_lat_lod,special_report)
-        st_folium(map, returned_objects=[])
+        a = st_folium(map, returned_objects=[])
         
+        return a
     except Exception as E:
         print(E)
         
