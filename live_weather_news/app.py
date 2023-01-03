@@ -45,6 +45,7 @@ def special_report_df():
     json_ob = json.loads(contents)
     body = json_ob['response']['body']['items']['item']
     body = pd.json_normalize(body)
+    print(body)
     return body
 
 def main():
@@ -84,7 +85,6 @@ def main():
     except Exception as E:
         st.subheader("🌞기상특보가 없습니다. 화창한 날씨로 예상됩니다.🌞")
         print(E)
-        st.write(E)
         pass
 
     # 특보 지도 띄우기
@@ -109,8 +109,9 @@ def main():
         st_folium(map, returned_objects=[])
         
     except Exception as E:
-        st.write(E)
-        st.write('지도오류')
+        print(E)
+        
+        
 
 
 if __name__ == "__main__" :
