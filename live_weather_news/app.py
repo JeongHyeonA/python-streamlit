@@ -118,7 +118,7 @@ def main():
         special_local_code.rename(columns={'#STN_ID,' : '지점코드'},inplace=True)
         map_lat_lod = pd.merge(special_report,special_local_code)
         map = special_report_map(special_local_code,map_lat_lod,special_report)
-        st_folium(map)
+        st_folium(map, width=1400, height=700)
 
     except Exception as E:
         st.write('지도오류발생')
