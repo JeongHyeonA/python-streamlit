@@ -37,14 +37,25 @@ def special_report_map(all_data,data,special_report):
 
 # 기상 특보 데이터
 def special_report_df():
+    
+    from datetime import datetime
+    from datetime import timedelta
+    
+    # 시간설정
+    base_datebf = datetime.now()
+    base_date = base_datebf.strftime('%Y%m%d')
+    base_time = base_datebf - timedelta(days=6)
+    base_time = base_time.strftime('%Y%m%d')
+    
     url = 'http://apis.data.go.kr/1360000/WthrWrnInfoService/getWthrWrnList'
-    params ={'serviceKey' : 'I3k49MWVfMM1ikcVAQtW+aBQeMCQuFa3+ZqXWrCmB1NqsdllN466vryE/9Nt1OhZ3nx46rQ6oaw0nGhO/FJULg==', 'pageNo' : '1', 'numOfRows' : '10', 'dataType' : 'JSON'}
+    params ={'serviceKey' : 'I3k49MWVfMM1ikcVAQtW+aBQeMCQuFa3+ZqXWrCmB1NqsdllN466vryE/9Nt1OhZ3nx46rQ6oaw0nGhO/FJULg==', 'pageNo' : '1', 'numOfRows' : '10', 'dataType' : 'JSON','fromTmFc' : base_time,'toTmFc' : base_date}
 
     response = requests.get(url, params=params)
     contents = response.text
     json_ob = json.loads(contents)
     body = json_ob['response']['body']['items']['item']
     body = pd.json_normalize(body)
+    print(body)
     return body
 
 def main():
