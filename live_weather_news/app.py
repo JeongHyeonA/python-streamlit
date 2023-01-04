@@ -42,11 +42,11 @@ def special_report_df():
     from datetime import timedelta
     
     # 시간설정
-    base_datebf = datetime.now() + timedelta(hours = 9)  - timedelta(minutes = 30)
+    base_datebf = datetime.now()
     base_date = base_datebf.strftime('%Y%m%d')
+    
     base_time = base_datebf - timedelta(days=6)
     base_time = base_time.strftime('%Y%m%d')
-    
     url = 'http://apis.data.go.kr/1360000/WthrWrnInfoService/getWthrWrnList'
     params ={'serviceKey' : 'I3k49MWVfMM1ikcVAQtW+aBQeMCQuFa3+ZqXWrCmB1NqsdllN466vryE/9Nt1OhZ3nx46rQ6oaw0nGhO/FJULg==', 'pageNo' : '1', 'numOfRows' : '10', 'dataType' : 'JSON','fromTmFc' : base_time,'toTmFc' : base_date}
 
@@ -56,6 +56,7 @@ def special_report_df():
     body = json_ob['response']['body']['items']['item']
     body = pd.json_normalize(body)
     print(body)
+    
     return body
 
 def main():
@@ -92,6 +93,7 @@ def main():
         show_data.set_index('지역명',inplace=True)
         show_data.drop(columns=['지점코드','발표번호'],inplace=True)
         st.dataframe(show_data)
+        
     except Exception as E:
         st.subheader("🌞기상특보가 없습니다. 화창한 날씨로 예상됩니다.🌞")
         st.write(E)
