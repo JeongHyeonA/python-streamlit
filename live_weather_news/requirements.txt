@@ -6,7 +6,7 @@ streamlit
 pytest==7.1.2
 seleniumbase==2.5.4
 opencv-python>=4.3
-folium==0.14
+folium>=0.11
 streamlit-folium>=0.6
 datetime
 bs4
