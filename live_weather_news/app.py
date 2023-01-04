@@ -83,7 +83,7 @@ def main():
         st.dataframe(show_data)
     except Exception as E:
         st.subheader("🌞기상특보가 없습니다. 화창한 날씨로 예상됩니다.🌞")
-        print(E)
+        st.write(E)
         pass
 
     # 특보 지도 띄우기
@@ -105,13 +105,10 @@ def main():
         special_local_code.rename(columns={'#STN_ID,' : '지점코드'},inplace=True)
         map_lat_lod = pd.merge(special_report,special_local_code)
         map = special_report_map(special_local_code,map_lat_lod,special_report)
-        a = st_folium(map, returned_objects=[])
-        
-        print(a)
-        
-        return a
+        st_folium(map, returned_objects=[])
+
     except Exception as E:
-        print(E)
+        st.write(E)
         
         
 
