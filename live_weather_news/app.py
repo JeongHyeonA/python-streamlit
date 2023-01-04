@@ -42,7 +42,7 @@ def special_report_df():
     from datetime import timedelta
     
     # 시간설정
-    base_datebf = datetime.now()
+    base_datebf = datetime.now() + timedelta(hours = 9)  - timedelta(minutes = 30)
     base_date = base_datebf.strftime('%Y%m%d')
     base_time = base_datebf - timedelta(days=6)
     base_time = base_time.strftime('%Y%m%d')
