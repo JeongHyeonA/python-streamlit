@@ -14,6 +14,7 @@ from streamlit_folium import st_folium
 import datetime
 import os
 
+
 filePath, fileName = os.path.split(__file__)
 
 def datetime_changer(x):    
@@ -118,7 +119,8 @@ def main():
         special_local_code.rename(columns={'#STN_ID,' : '지점코드'},inplace=True)
         map_lat_lod = pd.merge(special_report,special_local_code)
         map = special_report_map(special_local_code,map_lat_lod,special_report)
-        st_folium(map, width=1400, height=700)
+        
+        st_folium(map, width=1400, height=700,returned_objects=[])
 
     except Exception as E:
         st.write('지도오류발생')
