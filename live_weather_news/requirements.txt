@@ -2,11 +2,11 @@ streamlit
 numpy
 pandas
 requests
-streamlit
+streamlit==1.11.1
 pytest==7.1.2
 seleniumbase==2.5.4
 opencv-python>=4.3
-folium>=0.11
+folium
 streamlit-folium>=0.6
 datetime
 bs4
