@@ -119,6 +119,7 @@ def main():
         st_folium(map, returned_objects=[])
 
     except Exception as E:
+        st.write('지도오류발생')
         st.write(E)
         
         
